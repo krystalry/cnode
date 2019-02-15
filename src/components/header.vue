@@ -43,7 +43,7 @@
   a{
     color: #cccccc;
     font-size: 14px;
-    text-shadow: nonr;
+    text-shadow: none;
     text-decoration: none;
   }
 </style>
