@@ -2,7 +2,7 @@
   <div class="article">
     <!--如果正在加载显示此div-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
+      <img src="../assets/loading.gif" >
     </div>
     <div c v-else>
       <div class="topic_header">
@@ -40,7 +40,7 @@
           <span>
           {{index+1}}楼
         </span>
-          <span v-if="reply.ups.length>0">
+          <span v-if="reply.ups.length>0" >
           ☝ {{reply.ups.length}}
         </span>
           <span v-else>
@@ -58,42 +58,38 @@
     name: "Article",
     data(){
       return {
-        isLoading: false,//是否正在加载
-        post: {}//代表当前文章页的所有内容，所有属性
+        isLoading:false,//是否正在加载
+        post:{}//代表当前文章页的所有内容，所有属性
       }
     },
-    methods: {
+    methods:{
       getArticleData(){
         this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
-          .then(res = > {
-          if(res.data.success == true
-      )
-        {
-          this.isLoading = false;
+          .then(res=>{
+          if(res.data.success == true){
+          this.isLoading =false;
           this.post = res.data.data;
         }
       })
-      .
-        catch(function (err) {
+      .catch(function (err) {
           console.log(err)
         })
       }
     },
     beforeMount(){
-      this.isLoading = true;
+      this.isLoading =true;
       this.getArticleData();
     },
-    watch: {
-      '$route'(to, from){
+    watch:{
+      '$route'(to,from){
         this.getArticleData()
       }
     }
   }
 </script>
 
-<style>
+<style >
   @import url('../assets/markdown-github.css');
-
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
@@ -127,10 +123,9 @@
     color: #666;
     text-decoration: none;
   }
-
-  .replySec {
-    border-bottom: 1px solid #e5e5e5;
-    padding: 0 10px;
+  .replySec{
+    border-bottom:1px solid #e5e5e5;
+    padding:0 10px;
   }
 
   .loading {
@@ -155,8 +150,8 @@
 
   .topic_header ul {
     list-style: none;
-    padding: 0 0;
-    margin: 6px 0;
+    padding: 0px 0px;
+    margin: 6px 0px;
   }
 
   .topic_header li {
