@@ -1,11 +1,13 @@
 <template>
   <div class="header">
-    <img src="../assets/cnodejs_light.svg" alt="">
+    <router-link :to="{name:'root'}">
+      <img src="../assets/cnodejs_light.svg" alt="">
+    </router-link>
     <ul>
       <li><a href="#">首页</a></li>
       <li><a href="#">新手入门</a></li>
       <li><a href="#">API</a></li>
-      <li><a href="#">关于我们</a></li>
+      <li><a href="#">关于</a></li>
       <li><a href="#">注册</a></li>
       <li><a href="#">登录</a></li>
     </ul>
@@ -13,15 +15,15 @@
 </template>
 
 <script>
-  export default{
+  export default {
     name: "Header"
   }
 </script>
 
-<style>
+<style scoped>
   .header {
-    height: 50px;
     background-color: #5a5555;
+    height: 50px;
   }
 
   img {
@@ -31,19 +33,19 @@
   }
 
   ul {
-    float: right;
     list-style: none;
+    float: right;
+    margin: 4px;
   }
 
-  li{
+  li {
     display: inline-block;
     padding: 10px 15px;
   }
 
-  a{
-    color: #cccccc;
-    font-size: 14px;
-    text-shadow: none;
+  a {
     text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
   }
 </style>
