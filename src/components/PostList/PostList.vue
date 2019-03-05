@@ -2,7 +2,7 @@
   <div class="PostList">
     <!--在数据未返回的时候，显示这个正在加载的gif-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif" >
+      <img src="../../assets/loading.gif" >
     </div>
     <!--代表我門的主题帖子列表-->
     <div class="posts" v-else>
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-  import pagination from './Pagination'
+  import pagination from './../Pagination/Pagination'
   export default {
     name: "PostList",
     data(){

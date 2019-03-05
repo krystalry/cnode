@@ -2,7 +2,7 @@
   <div class="article">
     <!--如果正在加载显示此div-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif" >
+      <img src="../../assets/loading.gif" >
     </div>
     <div c v-else>
       <div class="topic_header">
@@ -89,7 +89,7 @@
 </script>
 
 <style >
-  @import url('../assets/markdown-github.css');
+  @import url('../../assets/markdown-github.css');
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
