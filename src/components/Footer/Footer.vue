@@ -14,6 +14,7 @@
   .footer {
     display: block;
     text-align: center;
+    margin-top: 50px;
     padding: 4px 0;
     bottom: 0;
     width: 100%;

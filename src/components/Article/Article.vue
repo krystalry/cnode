@@ -1,10 +1,9 @@
 <template>
   <div class="article">
-    <!--如果正在加载显示此div-->
     <div class="loading" v-if="isLoading">
       <img src="../../assets/loading.gif" >
     </div>
-    <div c v-else>
+    <div v-else>
       <div class="topic_header">
         <div class="topic_title">{{post.title}}</div>
         <ul>
@@ -134,7 +133,7 @@
   }
 
   .replyUp a:nth-of-type(2) {
-    margin-left: 0px;
+    margin-left: 0;
     display: inline-block;
   }
 
@@ -150,8 +149,8 @@
 
   .topic_header ul {
     list-style: none;
-    padding: 0px 0px;
-    margin: 6px 0px;
+    padding: 0 0;
+    margin: 6px 0;
   }
 
   .topic_header li {

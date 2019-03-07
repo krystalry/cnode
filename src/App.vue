@@ -26,6 +26,9 @@
     margin: 0;
     padding: 0;
   }
+  body{
+    background-color: #e1e1e1;
+  }
   .main{
     width: 80%;
     margin: 0 auto;
