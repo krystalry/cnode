@@ -5,7 +5,7 @@ import PostList from '../components/PostList/PostList'
 import UserInfo from '../components/UserInfo/UserInfo'
 import SlideBar from '../components/SliderBar/SlideBar'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [

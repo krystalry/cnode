@@ -5,7 +5,7 @@ import Axios from 'axios'
 
 
 Vue.prototype.$http = Axios;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,11 +13,11 @@ new Vue({
   router,
   components: {App},
   template: '<App/>'
-})
+});
 Vue.filter('formatDate', function (str) {
-    if (!str) return ''
-    var date = new Date(str)
-    var time = new Date().getTime() - date.getTime() //现在的时间-传入的时间 = 相差的时间（单位 = 毫秒）
+    if (!str) return '';
+    var date = new Date(str);
+    var time = new Date().getTime() - date.getTime(); //现在的时间-传入的时间 = 相差的时间（单位 = 毫秒）
     if (time < 0) {
       return ''
     } else if ((time / 1000 < 30)) {
@@ -36,7 +36,7 @@ Vue.filter('formatDate', function (str) {
       return parseInt(time / 31536000000) + '年前'
     }
   }
-)
+);
 //处理显示板块的文字
 Vue.filter('tabFormatter', function (post) {
   if (post.good == true) {
@@ -50,4 +50,5 @@ Vue.filter('tabFormatter', function (post) {
   } else {
     return '招聘'
   }
-})
+});
+//回到顶部

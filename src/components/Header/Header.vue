@@ -4,10 +4,26 @@
       <img src="../../assets/cnodejs_light.svg" alt="">
     </router-link>
     <ul>
-      <li><a href="#">首页</a></li>
-      <li><a href="#">新手入门</a></li>
-      <li><a href="#">API</a></li>
-      <li><a href="#">关于</a></li>
+      <li>
+        <router-link :to='{name:"root"}'>
+          首页
+        </router-link>
+      </li>
+      <li>
+        <a>新手入门</a>
+      </li>
+      <li>
+        <a>API</a>
+      </li>
+      <li>
+        <a>关于</a>
+      </li>
+      <li>
+        <a>注册</a>
+      </li>
+      <li>
+        <a>登录</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -33,17 +49,41 @@
   ul {
     list-style: none;
     float: right;
-    margin: 4px;
+    margin-right: 50px;
   }
 
   li {
     display: inline-block;
-    padding: 10px 15px;
+    line-height: 50px;
+    padding: 0 10px
   }
 
   a {
     text-decoration: none;
     color: #ccc;
-    font-size: 14px;
+    font-size: 13px;
+    text-shadow: none;
+  }
+
+  li span {
+    color: #fff;
+    font-size: 13px;
+  }
+
+  @media (max-width: 979px) {
+    .header {
+      height: 100px;
+    }
+
+    img {
+      margin-left: 20px;
+    }
+
+    ul {
+      margin-right: 0;
+      padding-left: 10px;
+      float: none;
+    }
   }
 </style>
+

@@ -59,7 +59,6 @@
           //移除最后一个数字
           this.pagebtns.splice(5, 1);
         }
-        debugger
         this.$emit('handleList', this.currentPage);
       }
     }
@@ -73,8 +72,6 @@
     background-color: white;
     padding: 6px 20px;
     border-radius: 5px;
-    /*box-shadow: 0px 2px 9px #888888;*/
-    border: 1px solid #888888;
   }
 
   button {
@@ -83,7 +80,6 @@
     color: #778087;
     border-radius: 3px;
     outline: none;
-    height: 21px;
     cursor: pointer;
     padding: 0 2px;
     width: 55px;

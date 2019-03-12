@@ -30,7 +30,7 @@
                     {{ post | tabFormatter}}
                   </span>
           <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
-            <span class="topic_title">{{ post.title | postListConversion(54)}}</span>
+            <span class="topic_title">{{ post.title}}</span>
           </router-link>
           <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
         </li>

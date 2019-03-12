@@ -89,6 +89,34 @@
 
 <style >
   @import url('../../assets/markdown-github.css');
+  .header {
+    background-color: #5a5555;
+    height: 50px;
+  }
+
+  img {
+    max-width: 120px;
+    margin-left: 50px;
+    margin-top: 10px;
+  }
+
+  ul {
+    list-style: none;
+    float: right;
+    margin: 4px;
+  }
+
+  li {
+    display: inline-block;
+    padding: 10px 15px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+  }
+
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
