@@ -1,10 +1,8 @@
 <template>
   <div class="PostList">
-    <!--在数据未返回的时候，显示这个正在加载的gif-->
     <div class="loading" v-if="isLoading">
       <img src="../../assets/loading.gif" >
     </div>
-    <!--代表我門的主题帖子列表-->
     <div class="posts">
       <ul>
         <li>
@@ -59,6 +57,11 @@
     components:{
       pagination
     },
+    watch:{
+      '$route'(to,from){
+        this.getData()
+      }
+    },
     methods:{
       getData(){
         this.$http.get('https://cnodejs.org/api/v1/topics',{
@@ -69,9 +72,11 @@
             }
           })
           .then(res=>{
+//          console.log(res.data.data);
           this.isLoading = false;
-        this.isTopbarLoading = true;
-        this.posts = res.data.data;
+          this.isTopbarLoading = true;
+          this.posts = res.data.data;
+          console.log(this.posts);
       })
       .catch(function (err) {
           console.log(err)
@@ -88,14 +93,17 @@
       }
     },
     beforeMount(){
-      this.isLoading = true;//加载成功之前显示加载动画
-      this.getData();//在页面加载之前获取数据
+      this.isLoading = true;
+      this.getData();
     }
   }
 </script>
 
 <style scoped>
   .PostList{
+    margin-bottom: 20px;
+    margin-right: 340px;
+    margin-top: 15px;
     background-color: #e1e1e1;
   }
   .posts {
@@ -225,6 +233,8 @@
     text-decoration: underline;
   }
 
+
+
   .loading {
     text-align: center;
     padding-top: 300px;
@@ -276,6 +286,13 @@
     }
     100% {
       transform: scale(1);
+    }
+  }
+
+  @media screen and (max-width: 979px){
+    .loading {
+      text-align: center;
+      padding-top: 100px;
     }
   }
 </style>

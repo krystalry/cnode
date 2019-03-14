@@ -9,12 +9,14 @@
         <ul>
           <li>•发布于：{{post.create_at | formatDate}}</li>
           <li>• 作者：
-            {{post.author.loginname}}
+            <router-link :to="{name:'user_info',params:{name:post.author.loginname}}">
+              {{post.author.loginname}}
+            </router-link>
           </li>
           <li>• {{post.visit_count}}次浏览</li>
           <li>•来自{{post | tabFormatter}}</li>
         </ul>
-        <div v-html="post.content" class="topic_content"></div>
+        <div v-html="post.content" class="topic_content markdown-body"></div>
       </div>
       <div id="reply">
         <div class="topbar">回复</div>
@@ -39,13 +41,8 @@
           <span>
           {{index+1}}楼
         </span>
-          <span v-if="reply.ups.length>0" >
-          ☝ {{reply.ups.length}}
-        </span>
-          <span v-else>
-        </span>
           </div>
-          <p v-html="reply.content"></p>
+          <p v-html="reply.content" class="replyContentStyle markdown-body"></p>
         </div>
       </div>
     </div>
@@ -87,36 +84,8 @@
   }
 </script>
 
-<style >
+<style scoped>
   @import url('../../assets/markdown-github.css');
-  .header {
-    background-color: #5a5555;
-    height: 50px;
-  }
-
-  img {
-    max-width: 120px;
-    margin-left: 50px;
-    margin-top: 10px;
-  }
-
-  ul {
-    list-style: none;
-    float: right;
-    margin: 4px;
-  }
-
-  li {
-    display: inline-block;
-    padding: 10px 15px;
-  }
-
-  a {
-    text-decoration: none;
-    color: #ccc;
-    font-size: 14px;
-  }
-
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
@@ -136,9 +105,17 @@
 
   #reply {
     margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   #reply img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: -9px;
+  }
+
+  .replyUserImg {
     width: 30px;
     height: 30px;
     position: relative;
@@ -170,9 +147,13 @@
   }
 
   .topic_title {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 75%;
+    line-height: 130%;
   }
 
   .topic_header ul {
@@ -186,13 +167,45 @@
     font-size: 12px;
     color: #838383;
   }
+  .topic_header li a {
+    text-decoration: none;
+  }
 
   .topic_content {
+    padding: 10px 10px;
+    font-size: 15px;
+    line-height: 1.7em;
+    overflow: auto;
     border-top: 1px solid #e5e5e5;
-    padding: 0 10px;
+  }
+
+  .replyContentStyle{
+    font-size: 15px;
+    line-height: 1.7em;
+    overflow: auto;
+    padding: 10px 35px  0 35px;
+    margin-bottom: 1em;
+  }
+
+  @media screen and (max-width: 979px){
+    .article:not(:first-child){
+      margin: 10px 10px 10px;
+    }
+  }
+
+  @media screen and (max-width: 979px){
+    .loading {
+      text-align: center;
+      padding-top: 100px;
+    }
   }
 
   .markdown-text img {
-    width: 92% !important;
+    width: 90% !important;
+    /*height: auto;*/
+    /*max-width: 100%;*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    /*border: 0;*/
   }
 </style>

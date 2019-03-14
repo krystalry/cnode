@@ -4,7 +4,7 @@
     <div class="main">
       <router-view name="slidebar"></router-view>
       <router-view name="main"></router-view>
-      <div class="backtotop"  @click="toTop">回到顶部</div>
+      <div class="backtotop"  @click="backTop">回到顶部</div>
     </div>
     <Footer></Footer>
   </div>
@@ -19,10 +19,30 @@
     components: {
       Header, PostList, Footer
     },
-    methods:{
-      toTop(){
-        scrollTo(0,0);
-      }
+    mounted () {
+      window.addEventListener('scroll', this.scrollToTop)
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.scrollToTop)
+    },
+      methods:{
+        // 点击图片回到顶部
+        backTop () {
+          let that = this;
+          let timer = setInterval(() => {
+            let ispeed = Math.floor(-that.scrollTop / 5)
+            document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed;
+            if (that.scrollTop === 0) {
+              clearInterval(timer)
+            }
+          }, 16)
+        },
+        // 计算距离顶部的高度
+        scrollToTop () {
+          let that = this;
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          that.scrollTop = scrollTop;
+        }
     }
   }
 </script>

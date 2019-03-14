@@ -10,6 +10,7 @@
           }">
         <img :src="userinfo.avatar_url" alt="">
       </router-link>
+      <p class="scoreStyle"> 积分 {{ userinfo.score}} </p>
     </div>
     <div class="recent_topics">
       <div class="topbar">作者最近主题</div>
@@ -90,18 +91,18 @@
 <style scoped>
   .authersummay, .recent_replies, .recent_topics {
     background-color: #fff;
+    margin-bottom: 10px;
   }
   .autherinfo {
     width: 328px;
     float: right;
-    margin-top: 0;
   }
   li{
-    padding: 3px 0 ;
+    padding: 6px 10px;
   }
   .recent_replies ul, .recent_topics ul {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     list-style: none;
     padding-left: 14px;
   }
@@ -117,7 +118,6 @@
     background-color: #f6f6f6;
     height: 16px;
     font-size: 12px;
-    margin-top: 10px;
   }
 
   img {
@@ -141,6 +141,32 @@
   }
 
   .authersummay .topbar {
-    margin-top: 0px;
+    margin-top: 0;
+  }
+
+  .scoreStyle {
+    padding: 0 10px 10px;
+    font-size:14px;
+  }
+
+  @media screen and (max-width: 979px){
+    .autherinfo{
+      float: none;
+      position: absolute;
+      bottom: -4px;
+      left: 22px;
+      display: none;
+    }
+
+    ul a{
+      max-width: 96%;
+      -o-text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 </style>
