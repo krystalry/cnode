@@ -9,11 +9,12 @@
           }
           }">
         <img :src="userinfo.avatar_url" alt="">
+        <span>{{userinfo.loginname}}</span>
       </router-link>
       <p class="scoreStyle"> 积分 {{ userinfo.score}} </p>
     </div>
     <div class="recent_topics">
-      <div class="topbar">作者最近主题</div>
+      <div class="topbar">作者最近创建的话题</div>
       <ul>
         <li v-for="list in topcilimitby5">
           <router-link :to="{
@@ -29,7 +30,7 @@
       </ul>
     </div>
     <div class="recent_replies">
-      <div class="topbar">作者最近回复</div>
+      <div class="topbar">作者最近参与的话题</div>
       <ul>
         <li v-for="list in replylimitby5">
           <router-link :to="{
@@ -60,11 +61,10 @@
       getData(){
         this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
           .then(res=>{
-          this.isLoading = false; //加载成功，去除动画
-        this.userinfo = res.data.data;
+          this.isLoading = false;
+          this.userinfo = res.data.data;
       })
       .catch(function (err) {
-          //处理返回失败后的问题
           console.log(err)
         })
       }
@@ -82,8 +82,8 @@
       }
     },
     beforeMount(){
-      this.isLoading = true;//加载成功之前显示加载动画
-      this.getData();//在页面加载之前获取数据
+      this.isLoading = true;
+      this.getData();
     }
   }
 </script>
@@ -98,17 +98,16 @@
     float: right;
   }
   li{
-    padding: 6px 10px;
+    padding: 2px 10px;
   }
   .recent_replies ul, .recent_topics ul {
     margin-top: 0;
     margin-bottom: 0;
     list-style: none;
-    padding-left: 14px;
   }
 
   ul a {
-    font-size: 12px;
+    font-size: 14px;
     text-decoration: none;
     color: #778087;
   }
@@ -117,7 +116,14 @@
     padding: 10px;
     background-color: #f6f6f6;
     height: 16px;
-    font-size: 12px;
+    font-size: 14px;
+  }
+
+  .authersummay a span {
+    font-size: 16px;
+    color: #778087;
+    position: absolute;
+    margin-top: 20px;
   }
 
   img {

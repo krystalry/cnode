@@ -72,11 +72,9 @@
             }
           })
           .then(res=>{
-//          console.log(res.data.data);
           this.isLoading = false;
           this.isTopbarLoading = true;
           this.posts = res.data.data;
-          console.log(this.posts);
       })
       .catch(function (err) {
           console.log(err)
@@ -102,7 +100,6 @@
 <style scoped>
   .PostList{
     margin-bottom: 20px;
-    margin-right: 340px;
     margin-top: 15px;
     background-color: #e1e1e1;
   }
@@ -114,6 +111,7 @@
     height: 30px;
     width: 30px;
     vertical-align: middle;
+    border-radius: 3px;
   }
 
   ul {
@@ -161,7 +159,6 @@
     text-align: center;
     width: 76px;
     font-size: 10px;
-    padding: 0 5px;
     display: inline-block;
   }
 
@@ -232,8 +229,6 @@
   a:hover {
     text-decoration: underline;
   }
-
-
 
   .loading {
     text-align: center;

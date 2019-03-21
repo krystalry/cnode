@@ -1,13 +1,15 @@
 <template>
   <div class="UserInfo">
-    <!--在数据未返回的时候，显示这个正在加载的gif-->
     <div class="loading" v-if="isLoading">
       <img src="../../assets/loading.gif" >
     </div>
     <div class="userInfomation" v-else>
-      <p>主页</p>
+      <p>
+        <router-link :to='{name:"root"}'>
+          首页
+        </router-link></p>
       <section>
-        <img :src="userinfo.avatar_url" >
+         <img :src="userinfo.avatar_url" >
         <span>{{userinfo.loginname}}</span>
         <p>
           {{userinfo.score}}积分
@@ -19,8 +21,10 @@
       <div class="topics">
         <p>最近创建的话题</p>
         <ul>
-          <li v-for="item in userinfo.recent_topics">
+          <li v-for="item in topcilimitby5">
+            <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}">
               <img :src="userinfo.recent_topics[0].author.avatar_url" alt="">
+            </router-link>
             <router-link :to="{
           name:'post_content',
           params:{
@@ -36,7 +40,7 @@
       <div class="replies">
         <p>最近参与的话题</p>
         <ul>
-          <li v-for="item in userinfo.recent_replies">
+          <li v-for="item in replylimitby5">
             <img :src="item.author.avatar_url" >
             <router-link :to="{
           name:'post_content',
@@ -67,18 +71,31 @@
       getData(){
         this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
           .then(res=>{
-          this.isLoading = false; //加载成功，去除动画
+          this.isLoading = false;
           this.userinfo = res.data.data;
+          console.log(this.userinfo)
+          console.log(this.userinfo.loginname)
       })
       .catch(function (err) {
-          //处理返回失败后的问题
           console.log(err)
         })
       }
     },
+    computed:{
+      topcilimitby5(){
+        if(this.userinfo.recent_topics){
+          return this.userinfo.recent_topics.slice(0,5);
+        }
+      },
+      replylimitby5(){
+        if(this.userinfo.recent_replies){
+          return this.userinfo.recent_replies.slice(0,5);
+        }
+      }
+    },
     beforeMount(){
-      this.isLoading = true;//加载成功之前显示加载动画
-      this.getData();//在页面加载之前获取数据
+      this.isLoading = true;
+      this.getData();
     }
   }
 </script>
@@ -92,6 +109,10 @@
   .userInfomation section {
     padding: 12px;
     position: relative;
+  }
+  .userInfomation p a{
+    text-decoration: none;
+    color: #80bd01;
   }
   .userInfomation section p,
   .userInfomation section span{
@@ -110,6 +131,7 @@
   }
   .userInfomation img {
     width: 40px;
+    border-radius: 3px;
   }
   .userInfomation li {
     list-style:none;
@@ -125,28 +147,41 @@
     background-color: rgba(212, 205, 205, 0.17);
     font-size: 0.75rem;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
   }
   .userInfomation > div >ul > li {
-    padding: 4px 0 4px 12px;
+    padding: 8px 12px 8px 12px;
     white-space: nowrap;
     font-size: 0.72rem;
     text-overflow: ellipsis;
     overflow: hidden;
     line-height: 30px;
     vertical-align: middle;
+    position: relative;
+    border-bottom: 1px solid #E1E1E1;
   }
   .userInfomation > div >ul > li > a {
-    color: #094E99;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-decoration: none;
+    color: #08c;
   }
-  .replies img{
+  .userInfomation > div >ul > li > a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+  .replies img,
+  .topics img {
     width: 30px;
     position: absolute;
   }
-  /*.replies a{*/
-    /*position: absolute;*/
-    /*left:60px;*/
-  /*}*/
+  .replies a,
+  .topics a{
+    position: absolute;
+    left:60px;
+  }
   .replies span{
     float: right;
     color:#777;
@@ -167,8 +202,6 @@
       display: inline-block;
       vertical-align: middle;
       line-height: 30px;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .userInfomation .topics > ul > li > a{
       max-width: 80%;
@@ -177,8 +210,6 @@
       display: inline-block;
       vertical-align: middle;
       line-height: 30px;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .userInfomation{
       width: 96%;

@@ -20,6 +20,7 @@
       </div>
       <div id="reply">
         <div class="topbar">回复</div>
+        <div v-if="post.replies.length === 0" class="noReplyStyle">本文暂无评论...</div>
         <div v-for="(reply,index)  in post.replies" class="replySec">
           <div class="replyUp">
             <router-link :to="{
@@ -28,7 +29,7 @@
             name:reply.author.loginname
           }
           }">
-              <img :src="reply.author.avatar_url" alt="">
+              <img :src="reply.author.avatar_url" class="replyUserImg" alt="">
             </router-link>
             <router-link :to="{
           name:'user_info',
@@ -54,8 +55,8 @@
     name: "Article",
     data(){
       return {
-        isLoading:false,//是否正在加载
-        post:{}//代表当前文章页的所有内容，所有属性
+        isLoading:false,
+        post:{}
       }
     },
     methods:{
@@ -86,6 +87,13 @@
 
 <style scoped>
   @import url('../../assets/markdown-github.css');
+  .noReplyStyle{
+    margin: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #778087;
+  }
+
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
@@ -99,7 +107,8 @@
     margin-top: 15px;
   }
 
-  #reply, .topic_header {
+  #reply,
+  .topic_header {
     background-color: #fff;
   }
 
@@ -122,7 +131,9 @@
     bottom: -9px;
   }
 
-  #reply a, #reply span {
+  #reply a,
+  #reply span,
+  .topic_header a,{
     font-size: 13px;
     color: #666;
     text-decoration: none;
