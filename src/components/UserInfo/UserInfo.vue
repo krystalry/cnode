@@ -73,8 +73,6 @@
           .then(res=>{
           this.isLoading = false;
           this.userinfo = res.data.data;
-          console.log(this.userinfo)
-          console.log(this.userinfo.loginname)
       })
       .catch(function (err) {
           console.log(err)

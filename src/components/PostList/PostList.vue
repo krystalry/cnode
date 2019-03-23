@@ -75,7 +75,6 @@
           this.isLoading = false;
           this.isTopbarLoading = true;
           this.posts = res.data.data;
-          console.log(this.posts)
       })
       .catch(function (err) {
           console.log(err)
