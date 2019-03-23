@@ -42,14 +42,14 @@
 
   img {
     max-width: 120px;
-    margin-left: 50px;
+    margin-left: 60px;
     margin-top: 10px;
   }
 
   ul {
     list-style: none;
     float: right;
-    margin-right: 50px;
+    margin-right: 65px;
   }
 
   li {

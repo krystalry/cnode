@@ -22,9 +22,9 @@
         <p>最近创建的话题</p>
         <ul>
           <li v-for="item in topcilimitby5">
-            <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}">
+            <!--<router-link :to="{name:'user_info',params:{name:item.loginname}}">-->
               <img :src="userinfo.recent_topics[0].author.avatar_url" alt="">
-            </router-link>
+            <!--</router-link>-->
             <router-link :to="{
           name:'post_content',
           params:{

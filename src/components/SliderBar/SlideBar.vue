@@ -11,7 +11,7 @@
         <img :src="userinfo.avatar_url" alt="">
         <span>{{userinfo.loginname}}</span>
       </router-link>
-      <p class="scoreStyle"> 积分 {{ userinfo.score}} </p>
+      <p class="scoreStyle"> 积分: {{ userinfo.score}} </p>
     </div>
     <div class="recent_topics">
       <div class="topbar">作者最近创建的话题</div>

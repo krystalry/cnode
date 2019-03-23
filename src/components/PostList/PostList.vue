@@ -75,6 +75,7 @@
           this.isLoading = false;
           this.isTopbarLoading = true;
           this.posts = res.data.data;
+          console.log(this.posts)
       })
       .catch(function (err) {
           console.log(err)
@@ -143,13 +144,6 @@
     line-height: 30px;
   }
 
-  .allcount {
-    width: 70px;
-    display: inline-block;
-    text-align: center;
-    font-size: 12px;
-  }
-
   .reply_count {
     color: #9e78c0;
     font-size: 14px;
@@ -184,6 +178,18 @@
     -o-border-radius: 3px;
     font-size: 12px;
     margin-right: 10px;
+  }
+
+  .topic_title{
+    max-width: 70%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .last_reply {

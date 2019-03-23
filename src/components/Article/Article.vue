@@ -23,25 +23,13 @@
         <div v-if="post.replies.length === 0" class="noReplyStyle">本文暂无评论...</div>
         <div v-for="(reply,index)  in post.replies" class="replySec">
           <div class="replyUp">
-            <router-link :to="{
-          name:'user_info',
-          params:{
-            name:reply.author.loginname
-          }
-          }">
+            <router-link :to="{name:'user_info',params:{name:reply.author.loginname}}">
               <img :src="reply.author.avatar_url" class="replyUserImg" alt="">
             </router-link>
-            <router-link :to="{
-          name:'user_info',
-          params:{
-            name:reply.author.loginname
-          }
-          }">
+            <router-link :to="{name:'user_info',params:{name:reply.author.loginname}}">
               <span>{{reply.author.loginname}}</span>
             </router-link>
-          <span>
-          {{index+1}}楼
-        </span>
+          <span>{{index+1}}楼</span>
           </div>
           <p v-html="reply.content" class="replyContentStyle markdown-body"></p>
         </div>
@@ -86,7 +74,6 @@
 </script>
 
 <style scoped>
-  @import url('../../assets/markdown-github.css');
   .noReplyStyle{
     margin: 10px;
     padding-bottom: 10px;
@@ -117,13 +104,6 @@
     margin-bottom: 15px;
   }
 
-  #reply img {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    bottom: -9px;
-  }
-
   .replyUserImg {
     width: 30px;
     height: 30px;
@@ -131,9 +111,9 @@
     bottom: -9px;
   }
 
+  .topic_header a,
   #reply a,
-  #reply span,
-  .topic_header a,{
+  #reply span {
     font-size: 13px;
     color: #666;
     text-decoration: none;
@@ -178,9 +158,6 @@
     font-size: 12px;
     color: #838383;
   }
-  .topic_header li a {
-    text-decoration: none;
-  }
 
   .topic_content {
     padding: 10px 10px;
@@ -188,6 +165,15 @@
     line-height: 1.7em;
     overflow: auto;
     border-top: 1px solid #e5e5e5;
+  }
+
+  .markdown-text a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+
+  .markdown-text img {
+    width: 92% !important;
   }
 
   .replyContentStyle{
@@ -209,14 +195,5 @@
       text-align: center;
       padding-top: 100px;
     }
-  }
-
-  .markdown-text img {
-    width: 90% !important;
-    /*height: auto;*/
-    /*max-width: 100%;*/
-    /*display: inline-block;*/
-    /*vertical-align: middle;*/
-    /*border: 0;*/
   }
 </style>

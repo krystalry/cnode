@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Axios from 'axios'
-
+import 'github-markdown-css'
 
 Vue.prototype.$http = Axios;
 Vue.config.productionTip = false;
@@ -51,4 +51,3 @@ Vue.filter('tabFormatter', function (post) {
     return '招聘'
   }
 });
-//回到顶部
